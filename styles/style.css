@@ -1,7 +1,13 @@
+html {
+  background: white
+}
 body {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 20px 20px;
   font-family: 'Roboto';
   color: #333;
-  background-color: #F9F7EB;
+  background-color: white;
 }
 
 #title {

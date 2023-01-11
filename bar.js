@@ -9,6 +9,14 @@ var chart = new Chart(ctx, {
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                barThickness: 3
+            },
+            {
+                label: 'Data Set 2',
+                data: [1, 1, 3, 1, 2, 3],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
             }
         ]
@@ -16,6 +24,7 @@ var chart = new Chart(ctx, {
     options: {
         scales: {
             xAxes: [{
+                stacked: true,
                 ticks: {
                     beginAtZero: true
                 }
