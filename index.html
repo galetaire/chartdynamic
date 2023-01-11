@@ -1,32 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Chart.js example</title>
-  </head>
-  <body>
-    <div style="width:;"><canvas id="chart"></canvas></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-    <script>
-    d3.csv('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2814973/atp_wta.csv')
-      .then(makeChart);
-
-      function makeChart(players) {
-        var playerLabels = players.map(function(d) {return d.Name});
-        var weeksData = players.map(function(d) {return d.Weeks});
-
-        var chart = new Chart('chart', {
-          type: 'horizontalBar',
-          data: {
-            labels: playerLabels,
-            datasets: [
-              {
-                data: weeksData
-              }
-            ]
-          }
-        });
-      }
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css">
+  <link href="styles/style.css" rel="stylesheet" type="text/css">
+  <title>Chart JS</title>
+</head>
+<body>
+<div id="title">Which tennis player was No.1 the longest?</div>
+<div id="legend">
+  <div class="item female">Women</div>
+  <div class="item male">Men</div>
+</div>
+<div id="chart-wrapper"><canvas id="chart"></canvas></div>
+<script src="chart.js"></script>
+<div id="footer">
+  <div class="left" ><a href="https://createwithdata.com/chartjs-and-csv/" target="_blank">About</a></div>
+  <div class="right">Source: <a href="https://public.tableau.com/en-us/s/resources" target="_blank">Tableau</a> / Wikipedia</div>
+</div>
+</body>
 </html>
