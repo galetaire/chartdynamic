@@ -6,7 +6,7 @@ body {
 
 #title {
   font-family: 'Merriweather';
-  text-align: center;
+  text-align: left;
   padding: 30px;
   font-size: 28px;
   letter-spacing: -0.01em;
@@ -33,9 +33,24 @@ body {
   border-left: 12px solid #F15F36;
 }
 
-
 #chart-wrapper {
-  height: 1000px;
+  height:1000px;
+  width:;
+}
+
+#chart-line {
+  height: ;
+  width: ;
+}
+
+#chart-bar {
+  height: ;
+  width: ;
+}
+
+#chart-mixed {
+  height: ;
+  width: ;
 }
 
 #footer {
