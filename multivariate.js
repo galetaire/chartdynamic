@@ -1,4 +1,4 @@
-var ctx = document.getElementById('barstacked').getContext('2d');
+var ctx = document.getElementById('multivariate').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -87,7 +87,7 @@ var myChart = new Chart(ctx, {
                 autoSkip: false,
                 maxRotation: 90,
                 minRotation: 90,
-                padding: -150
+                padding: -180
               },
                 stacked: true,
                 id: "axis1",

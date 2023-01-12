@@ -4,23 +4,43 @@
   <meta charset="UTF-8">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-  <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" type="text/css">
   <link href="styles/style.css" rel="stylesheet" type="text/css">
-  <title>Chart JS</title>
+  <title>Dynamic Charts - SHO</title>
 </head>
 <body>
-<div id="title">Land and building permits</div>
-<div id="chart-line"><canvas id="line"></canvas></div>
-<script src="line.js"></script>
-<div id="title">Mixed chart</div>
-<div id="chart-mixed"><canvas id="barstacked"></canvas></div>
-<script src="barstacked.js"></script>
-<div id="title">Builgs per construction year</div>
-<div id="chart-bar"><canvas id="area"></canvas></div>
-<script src="area.js"></script>
+<center><h1>Dynamic Charts 🔭🌈</h1></center>
+<center><h5>Go back to the parent site: <a href="https://www.spainhousing.xyz/" target="_blank">spainhousing.xyz</a></h5></center>
+<p>This site is a proof of concept for dynamic charts created with <a href="https://www.chartjs.org/" target="_blank">Chart.js</a>. The data has been hard-coded, meaning that is integrated in it's respective <code>.js</code> file, along with the functional code.</p>
+
+<p>Therefor, there is no unique database from which the data is called. However, it is possible to use a <code>.csv</code> file. A good example for future reference is the following by <a href="https://twitter.com/peter_r_cook" target="_blank">Peter Cook</a>:</p>
+<ul> <!-- List of content -->
+  <li><a href="https://www.createwithdata.com/chartjs-and-csv/" target="_blank">Visualising CSV data with Chart.js</a></li>
+</ul>
+<div id="title"><b>Land and building permits</b></div>
+<div id="chart-line"><canvas id="land"></canvas></div>
+<script src="land.js"></script>
+<div id="title"><b>Multivariate model</b></div>
+<div id="chart-mixed"><canvas id="multivariate"></canvas></div>
+<script src="multivariate.js"></script>
+<div id="title"><b>Change (%) in the cost of production</b></div>
+<div id="chart-mixed"><canvas id="cost"></canvas></div>
+<script src="cost.js"></script>
+<!-- The following chart uses the chart.js 4.0 version. Prior charts are using 2.0. So we have to call the new
+versions from a different CDN, or the output chart will be distorted-->
+<div id="title"><b>Change (%) of the interest rate by the ECB</b></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
+<div id="chart-bar"><canvas id="credit"></canvas></div>
+<script src="credit.js"></script>
+<br>
 <div id="footer">
-  <div class="left" ><a href="https://createwithdata.com/chartjs-and-csv/" target="_blank">About</a></div>
-  <div class="right">Source: <a href="https://public.tableau.com/en-us/s/resources" target="_blank">Tableau</a> / Wikipedia</div>
+  <div>
+      <span style="vertical-align: middle;">Created using <a href="https://www.chartjs.org/" target="_blank">Chart.js site</a></span>
+      <img src="images\chartjs-logo.svg" style="vertical-align: middle;" width="50px"/>
+  </div>
 </div>
+<center><small style={{ display: 'block', marginTop: '8rem' }}>
+<script>document.write(new Date().getFullYear())</script> ©HousingSpanish. Creative Commons Attribution-ShareAlike 4.0 International License.
+</small></center>
 </body>
 </html>

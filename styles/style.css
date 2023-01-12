@@ -1,17 +1,23 @@
 html {
-  background: white
+  background: white;
+  font-size: 14px;
+  line-height: 20px;
 }
 body {
   width: 800px;
   margin: 0 auto;
   padding: 0 20px 20px 20px;
-  font-family: 'Roboto';
+  font-family: 'Inter', sans-serif;
   color: #333;
   background-color: white;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 #title {
-  font-family: 'Merriweather';
+  font-family: 'Inter', sans-serif;
   text-align: left;
   padding: 30px;
   font-size: 28px;
@@ -60,10 +66,7 @@ body {
 }
 
 #footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10px;
-  color: #aaa;
+  text-align: center;
   font-size: 12px;
 }
 
