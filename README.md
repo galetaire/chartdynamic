@@ -1,4 +1,4 @@
-**Parent site: [spainhousing.xyz](https://spainhousing.xyz)**
+**Parent repo: [/spahousing](https://github.com/galetaire/spahousing)**
 
 ## Description
 
