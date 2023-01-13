@@ -18,20 +18,26 @@
   <li><a href="https://www.createwithdata.com/chartjs-and-csv/" target="_blank">Visualising CSV data with Chart.js</a></li>
 </ul>
 <div id="title"><b>Land and building permits</b></div>
-<div id="chart-line"><canvas id="land"></canvas></div>
-<script src="land.js"></script>
+<div id="chart-wrapper"><canvas id="land"></canvas></div>
+<script src="data/land.js"></script>
 <div id="title"><b>Multivariate model</b></div>
-<div id="chart-mixed"><canvas id="multivariate"></canvas></div>
-<script src="multivariate.js"></script>
+<div id="chart-wrapper"><canvas id="multivariate"></canvas></div>
+<script src="data/multivariate.js"></script>
+<div id="title"><b>Number of home sales</b></div>
+<div id="chart-wrapper"><canvas id="sales"></canvas></div>
+<script src="data/sales.js"></script>
+<div id="title"><b>Rainbow model</b></div>
+<div id="chart-wrapper"><canvas id="rainbow"></canvas></div>
+<script src="data/rainbow.js"></script>
 <div id="title"><b>Change (%) in the cost of production</b></div>
-<div id="chart-mixed"><canvas id="cost"></canvas></div>
-<script src="cost.js"></script>
+<div id="chart-wrapper"><canvas id="cost"></canvas></div>
+<script src="data/cost.js"></script>
 <!-- The following chart uses the chart.js 4.0 version. Prior charts are using 2.0. So we have to call the new
 versions from a different CDN, or the output chart will be distorted-->
 <div id="title"><b>Change (%) of the interest rate by the ECB</b></div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
-<div id="chart-bar"><canvas id="credit"></canvas></div>
-<script src="credit.js"></script>
+<div id="chart-wrapper"><canvas id="credit"></canvas></div>
+<script src="data/credit.js"></script>
 <br>
 <div id="footer">
   <div>
@@ -39,7 +45,8 @@ versions from a different CDN, or the output chart will be distorted-->
       <img src="images\chartjs-logo.svg" style="vertical-align: middle;" width="50px"/>
   </div>
 </div>
-<center><small style={{ display: 'block', marginTop: '8rem' }}>
+<center>
+  <small style={{ display: 'block', marginTop: '8rem' }}>
 <script>document.write(new Date().getFullYear())</script> ©HousingSpanish. Creative Commons Attribution-ShareAlike 4.0 International License.
 </small></center>
 </body>

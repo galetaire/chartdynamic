@@ -23,8 +23,7 @@ var chart = new Chart(ctx, {
                 borderWidth: 1,
                 fill: false
             }
-        ]
-    },
+        ]},
     options: {
         scales: {
             xAxes: [{
