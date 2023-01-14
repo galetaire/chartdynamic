@@ -12,3 +12,4 @@ Some files are duplicated, such as ``cost.js`` cand ``cost2.js``. They are the s
 ## Website access
 
 The site: http://chart.galetaire/, is a Handshake domain, note that for resolving the handshake DNS you will need a resolver since most browsers today do not support it, consider using Fingertip:
+* https://github.com/imperviousinc/fingertip
