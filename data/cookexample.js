@@ -45,5 +45,5 @@ function makeChart(players) {
 }
 
 // Request data using D3
-d3.csv('sheets/atp_wta.csv')
+d3.csv('https://raw.githubusercontent.com/galetaire/chartdynamic/main/data/sheets/atp_wta.csv')
   .then(makeChart);
