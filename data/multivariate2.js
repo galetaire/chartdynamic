@@ -1,21 +1,49 @@
+//getGradient
+let width, height, gradient;
+function getGradient(ctx, chartArea, scales){
+  const chartWidth = chartArea.right - chartArea.left;
+  const chartHeight = chartArea.bottom - chartArea.top;
+  if (gradient === null || width !== chartWidth || height !== chartHeight){
+    const pointzero = scales.y.getPixelForValue(0);
+    const pointzeroheight = pointzero - chartArea.top;
+    const pointzeroPercentage = pointzeroheight / chartHeight;
+    width = chartWidth;
+    height = chartHeight;
+    gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartHeight + chartArea.top);
+    gradient.addColorStop(pointzeroPercentage, 'rgba(0, 176, 80, 0.8)');
+    gradient.addColorStop(pointzeroPercentage, 'rgba(225, 83, 83, 0.8)');
+  }
+  return gradient;
+};
+
 var ctx = document.getElementById('multivariate').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['1986','1987','1988','1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022'],
+        labels: ['1986','1987','1988','1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023'],
         datasets: [
-          /*{
-            label: 'Interest rate',
+          {
+            label: 'Euribor',
             type: 'line',
-            data: [-1.38, 2.85, -2.76, 3.34, 0.30, -2.36, 0.23, -2.40, -1.84, 0.92, -2.64, -2.16, -1.19, -0.85, 1.62, -0.70, -0.58, -1.19, -0.02, 0.06, 1.15, 0.99, 0.36, -3.32, -0.17, 0.69, -1.00, -0.51, -0.06, -0.31, -0.20, -0.11, -0.02, -0.05, -0.08, -0.18, 1.58],
-            borderColor: 'rgba(0, 0, 0, 1)',
-            borderWidth: 0.5,
+            data: [-1.38, 2.85, -2.76, 3.34, 0.30, -2.36, 0.23, -2.40, -1.84, 0.92, -2.64, -2.16, -1.19, -0.85, 1.62, -0.70, -0.58, -1.19, -0.02, 0.06, 1.15, 0.99, 0.36, -3.32, -0.17, 0.69, -1.00, -0.51, -0.06, -0.31, -0.20, -0.11, -0.02, -0.05, -0.08, -0.18, 1.58, 2.21],
+            backgroundColor: 'rgba(0, 176, 80, 0.7)',
+            borderColor: function(context){
+              const chart = context.chart;
+              const {ctx, chartArea, scales} = chart;
+                if(!chartArea) {
+                return null;
+              }
+              return getGradient(ctx, chartArea, scales);
+              },
+            borderWidth: 2,
             showLine: true,
+            pointRadius: 0,
+            tension: 0.4,
             pointStyle: false,
             fill: false
-          },*/
+          },
           {
-            label: 'Inflation',
+            label: 'CPI',
             type: 'line',
             data: [8.80,5.26,4.83,6.79,6.72,5.94,5.93,4.57,4.72,4.67,3.56,1.97,1.83,2.31,3.43,3.59,3.07,3.04,3.04,3.37,3.52,2.79,4.08,-0.29,1.80,3.20,2.45,1.41,-0.15,-0.50,-0.20,1.96,1.67,0.70,-0.32,3.09,8.65],
             backgroundColor: 'rgba(250, 0, 0, 0.7)',
@@ -39,7 +67,7 @@ var myChart = new Chart(ctx, {
             fill: false
           },
           {
-            label: 'Home sales',
+            label: 'Sales',
             type: 'line',
             data: [,,,,,,,,,,,,,,,,,,11.95,13.54,6.72,-7.70,-28.79,-25.12,6.34,-18.15,-11.48,-1.87,2.00,11.52,14.01,15.36,10.76,-2.79,-17.44,36.03,16.92],
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -68,7 +96,7 @@ var myChart = new Chart(ctx, {
             borderColor: 'rgba(89, 89, 89, 1)',
             borderWidth: 1,
             data: [19.61,26.23,31.09,24.46,13.93,1.69,-0.97,-0.54,3.05,3.81,1.73,2.95,4.43,8.66,11.40,9.89,13.03,15.64,16.18,13.12,10.84,5.35,-1.36,-4.19,-1.77,-7.46,-11.31,-8.36,0.24,2.00,2.50,4.73,2.55,2.20,-0.97,6.32,7.53],
-            xAxisID: "axis1",
+            categoryPercentage: 0.5,
         },
         {
             label: 'Real price',
@@ -76,41 +104,22 @@ var myChart = new Chart(ctx, {
             borderColor: 'rgba(255, 95, 21, 1)',
             borderWidth: 1,
             data: [10.81, 20.97, 26.26, 17.67, 7.21, -4.25, -6.90, -5.11, -1.67, -0.86, -1.83, 0.98, 2.60, 6.35, 7.97, 6.30, 9.96, 12.60, 13.14, 9.75, 7.32, 2.56, -5.44, -3.90, -3.57, -10.66, -13.76, -9.77, 0.39, 2.50, 2.70, 2.77, 0.88, 1.50, -0.65, 3.23, -1.12],
-            xAxisID: "axis2",
+            categoryPercentage: 0.8,
         }]
     },
     options: {
         scales: {
-            xAxes: [{
-              ticks: {
-                autoSkip: false,
-                maxRotation: 90,
-                minRotation: 90,
-                padding: -180
-              },
+            x: {
                 stacked: true,
-                id: "axis1",
-                barThickness: 8,
-              }, {
-                display: false,
-                stacked: true,
-                id: "axis2",
-                barThickness: 15,
-                // these are needed because the bar controller defaults set only the first x axis properties
-                type: 'category',
-                categoryPercentage: 0.8,
-                barPercentage: 0.9,
-                gridLines: {
-                  offsetGridLines: true
-                },
-                offset: true
-              }],
-            yAxes: [{
-                stacked: false,
                 ticks: {
-                    beginAtZero: true
-                }
-            }]
+                  autoSkip: false,
+                  maxRotation: 90,
+                  minRotation: 90,
+                },
+              },
+            y: {
+                stacked: false,
+            }
         }
     }
 });
