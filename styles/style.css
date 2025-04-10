@@ -4,20 +4,33 @@ html {
   line-height: 20px;
 }
 body {
-  width: 800px;
+  width: 700px;
   margin: 0 auto;
   padding: 0 20px 20px 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #333;
-  background-color: white;
+  background-color: ;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 20px;
+  font-style: bold;
+}
+
+a:link {
+  color: #007bff;       /* Before being clicked */
+}
+
+a:visited {
+  color: #007bff;    /* After being clicked */
 }
 
 #title {
-  font-family: 'Inter', sans-serif;
   text-align: left;
   padding: 30px;
   font-size: 28px;
@@ -59,3 +72,61 @@ h1 {
 #footer a {
   color: #aaa;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  border-top: 0px solid #ccc;
+  border-bottom: 0px solid #ccc;
+  font-size: 12px;
+}
+
+th, td {
+  padding: 5px 20px;
+  text-align: left;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #f9f9f9;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* Menu bar styling */
+    .navbar {
+      background-color: ;
+      padding: 10px 0px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .navbar button {
+      background-color: #ffffff;
+      color: black;
+      border: none;
+      padding: 10px 5px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .navbar button:hover {
+      background-color: #e6e6e6;
+    }

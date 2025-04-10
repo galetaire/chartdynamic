@@ -2,50 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="styles/style.css" rel="stylesheet" type="text/css">
-  <title>Dynamic Charts - SHO</title>
+  <title>🔭 Spain Housing Observatory</title>
 </head>
 <body>
-<center>
-  <h1>Dynamic Charts 🔭🌈</h1>
-</center>
-<center>
-  <h5>Go back to the parent site: <a href="https://www.spainhousing.eu/" target="_blank">spainhousing.eu</a></h5>
-</center>
-<p>This site is a proof of concept for dynamic charts. For more information, please visit this <a href="https://github.com/galetaire/chartdynamic" target="_blank">repository</a>.
-  <!-- Scripts with the charts-->
-<div id="title"><b>Land and building permits</b></div>
-<div id="chart-wrapper"><canvas id="land"></canvas></div>
-<script src="data/land.js"></script>
-<div id="title"><b>Number of home sales</b></div>
-<div id="chart-wrapper"><canvas id="sales"></canvas></div>
-<script src="data/sales.js"></script>
-<div id="title"><b>Rainbow model</b></div>
-<div id="chart-wrapper"><canvas id="rainbow"></canvas></div>
-<script src="data/rainbow.js"></script>
-<div id="title"><b>Change (%) in the cost of production</b></div>
-<div id="chart-wrapper"><canvas id="cost"></canvas></div>
-<script src="data/cost.js"></script>
-<!-- The following chart uses the chart.js 4.0 version. Prior charts are using 2.0. So we have to call the new
-versions from a different CDN, or the output chart will be distorted-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
-<div id="title"><b>Multivariate model</b></div>
-<div id="chart-wrapper"><canvas id="multivariate"></canvas></div>
-<script src="data/multivariate2.js"></script>
+<br>
+<br>
+<h1>Spain Housing Observatory 🔭</h1>
+
+<div class="navbar">
+  <button onclick="window.location.href='index.html'">Statistical indicators 📉</button>
+  <button onclick="window.location.href='methodology.html'">Methodology 📓</button>
+</div>
+
+<p>A comprehensive macroeconomic view of the Spanish housing market, featuring 15 topics and 49 charts. All content is documented with notes and sources.</p>
+
+<h2>Topics / Indicators</h2>
+  <table>
+    <thead>
+<!--  <tr>
+        <th>Topics / Indicators</th>
+        <th>Link</th>
+      </tr>-->
+    </thead>
+    <tbody>
+      <tr><td>1. Price</td><td><a href="posts/price.html">➞ Access</a></td></tr>
+      <tr><td>2. Rental price</td><td><a href="posts/rent.html">➞ Access</a></td></tr>
+      <tr><td>3. Sales</td><td><a href="posts/sales.html">➞ Access</a></td></tr>
+      <tr><td>4. Mortgages</td><td><a href="posts/credit.html">➞ Access</a></td></tr>
+      <tr><td>5. Monetary policy</td><td><a href="posts/monetary.html">➞ Access</a></td></tr>
+      <tr><td>6. Unemployment</td><td><a href="posts/labor.html">➞ Access</a></td></tr>
+      <tr><td>7. Wages</td><td><a href="posts/wages.html">➞ Access</a></td></tr>
+      <tr><td>8. Stock</td><td><a href="posts/stock.html">➞ Access</a></td></tr>
+      <tr><td>9. Land and building permits</td><td><a href="posts/land.html">➞ Access</a></td></tr>
+      <tr><td>10. Funding source</td><td><a href="posts/funding.html">➞ Access</a></td></tr>
+      <tr><td>11. Production Cost</td><td><a href="posts/cost.html">➞ Access</a></td></tr>
+      <tr><td>12. Ownership structure</td><td><a href="posts/ownership.html">➞ Access</a></td></tr>
+      <tr><td>13. Return on investment</td><td><a href="posts/roi.html">➞ Access</a></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Models</h2>
+  <table>
+    <thead>
+      <!--  <tr>
+        <th>Models</th>
+        <th>Link</th>
+      </tr>-->
+    </thead>
+    <tbody>
+      <tr><td>14. Multivariate model</td><td><a href="posts/multivariate.html">➞ Access</a></td></tr>
+      <tr><td>15. Housing cycles model</td><td><a href="posts/rainbow.html">➞ Access</a></td></tr>
+    </tbody>
+  </table>
+<br>
+<p>Suggestions, errors?, find me on X, <a href="https://x.com/HousingSpanish">@HousingSpanish</a>. Repository available on <a href="https://github.com/galetaire/spahousing">GitHub</a>.</p>
 <br>
 <!-- Footer-->
 <div id="footer">
-  <div>
-      <span style="vertical-align: middle;">Created using <a href="https://www.chartjs.org/" target="_blank">Chart.js</a></span>
-      <img src="images\chartjs-logo.svg" style="vertical-align: middle;" width="50px"/>
-  </div>
 </div>
 <center>
   <small style={{ display: 'block', marginTop: '8rem' }}>
-<script>document.write(new Date().getFullYear())</script> ©HousingSpanish. Creative Commons Attribution-ShareAlike 4.0 International License.
+<script>document.write(new Date().getFullYear())</script> ©HousingSpanish 🔭. Creative Commons Attribution-ShareAlike 4.0 International License.
 </small></center>
+<br>
 </body>
 </html>
