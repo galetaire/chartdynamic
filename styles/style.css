@@ -1,6 +1,6 @@
 html {
   background: white;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
 }
 body {
@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #333;
   background-color: ;
+  line-height: 27px;
 }
 
 h1 {
@@ -63,7 +64,6 @@ a:visited {
   width:;
 }
 
-
 #footer {
   text-align: center;
   font-size: 12px;
@@ -79,7 +79,7 @@ table {
   margin: 20px auto;
   border-top: 0px solid #ccc;
   border-bottom: 0px solid #ccc;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 th, td {
@@ -125,6 +125,8 @@ td a:hover {
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
     }
 
     .navbar button:hover {
