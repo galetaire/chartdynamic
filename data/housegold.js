@@ -4,16 +4,56 @@ function makeChart(housegold) {
   var rangeEnd = new Date().getFullYear() - 1899
   var rangeLabels = housegold.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
   var rangeOne = housegold.map(function(d) {return d.Gold_house}).slice(rangeStart, rangeEnd);
+  var rangeTwo = housegold.map(function(d) { return d.EUR_house; }).slice(rangeStart, rangeEnd);
 
   Chart.defaults.font.size = 12;
+
   var chart = new Chart('housegold', {
+    type: 'line',
+    data: {
+      labels: rangeLabels,
+      datasets: [
+        {
+          label: "Price in ounces of gold (Au)",
+          data: rangeOne,
+          yAxisID: 'yLeft',                  // Use the left y-axis
+          backgroundColor: 'rgba(232, 181, 10, 0.8)',
+          borderColor: 'rgba(232, 181, 10, 1)',
+          borderWidth: 2,
+          pointStyle: 'rectRounded',
+          pointRadius: 4,
+          fill: false,
+          tension: 0.4
+        },
+        {
+          label: "Price in Euros (€)",
+          data: rangeTwo,
+          yAxisID: 'yRight',                 // Use the right y-axis
+          backgroundColor: 'rgba(68, 114, 196, 0.8)',
+          borderColor: 'rgba(68, 114, 196, 0.9)',
+          borderWidth: 2,
+          pointStyle: 'rectRounded',
+          pointRadius: 4,
+          fill: false,
+          tension: 0.4
+        }
+      ]
+    },
     options: {
       scales: {
         x: {
           ticks: {
             maxRotation: 90,
-            minRotation: 90,
+            minRotation: 90
           }
+        },
+        yLeft: {
+          type: 'linear',
+          position: 'left'
+        },
+        yRight: {
+          type: 'linear',
+          position: 'right'
         }
       },
       plugins: {
@@ -21,31 +61,14 @@ function makeChart(housegold) {
           callbacks: {
             label: function(context) {
               const label = context.dataset.label || '';
-              const value = Math.round(context.parsed.y); // Round Y value
+              const value = Math.round(context.parsed.y);
               return `${label}: ${value}`;
             }
           }
         }
       }
-    },
-    data: {
-      labels: rangeLabels,
-      datasets: [
-        {
-          label: "Preu d'un habitatge en unces d'or",
-          type: 'line',
-          data: rangeOne,
-          backgroundColor: 'rgba(232, 181, 10, 0.5)',
-          borderColor: 'rgba(143, 124, 15, 1)',
-          borderWidth: 1,
-          pointStyle: 'circle',
-          pointRadius: 5,
-          fill: false,
-          tension: 0.4
-        }
-      ]
     }
-  })
+  });
 }
 
 // Request data from .csv file using D3js library

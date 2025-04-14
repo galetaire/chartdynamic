@@ -5,35 +5,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
   <title>🔭 Spain Housing Observatory</title>
 </head>
 <body>
 <br>
 <br>
-<h1>(a) Annual evolution of housing prices</h1>
+<h1>Housing prices</h1>
 
 <div class="navbar">
   <button onclick="window.location.href='../index.html'">Statistical indicators 📉</button>
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<div id="chart-wrapper"><canvas id="housegold"></canvas></div>
-<script src="../data/housegold.js"></script>
+<div id="chart-wrapper"><canvas id="priceyearly"></canvas></div>
+<script src="../data/priceyearly.js"></script>
 
 <ul>
   <li><b>↑ House price since 1985, in euros per square meter, according to notaries:</b> nominal price, <a href="realprice.html">real price</a> (inflation-adjusted, CPI Base 100 = 1985), and accumulated inflation.</li>
-  <li>See this <a href="money.html">entry</a> for an overview of housing prices in <b>dollars, gold and bitcoin</b>.</li>
+  <li>For an overview of housing prices in <b>dollars, gold and bitcoin</b>, see this <a href="money.html">entry</a>.</li>
 </ul>
 
-<div id="chart-wrapper"><canvas id="sales"></canvas></div>
-<script src="../data/sales.js"></script>
+<div id="chart-wrapper"><canvas id="ipvvr"></canvas></div>
+<script src="../data/ipvvr.js"></script>
 
 <ul>
   <li><b>↑ Case-Shiller housing index (or IPVVR in Spain):</b> the index is constructed using data from those homes that have been sold at least twice within the study period, using information from the same units at two points in time.</li>
 </ul>
 
-<h1>(b) Quarterly evolution of prices</h1>
+<h1>Quarterly evolution of prices</h1>
 
 <ul>
   <li><strong>Left axis (line)</strong>: house price in euros per square meter, according to Idealista and to the notaries.</li>

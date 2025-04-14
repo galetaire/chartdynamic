@@ -1,7 +1,7 @@
 html {
   background: white;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 17px;
+  line-height: 27px;
 }
 body {
   width: 700px;
@@ -10,16 +10,15 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #333;
   background-color: ;
-  line-height: 27px;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 800;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-style: bold;
 }
 
@@ -79,7 +78,7 @@ table {
   margin: 20px auto;
   border-top: 0px solid #ccc;
   border-bottom: 0px solid #ccc;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 th, td {
@@ -125,7 +124,7 @@ td a:hover {
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
-      font-size: 16px;
+      font-size: 17px;
       font-family: 'Roboto', sans-serif;
     }
 

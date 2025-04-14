@@ -4,62 +4,82 @@ function makeChart(housebitcoin) {
   var rangeEnd = new Date().getFullYear() - 1899
   var rangeLabels = housebitcoin.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
   var rangeOne = housebitcoin.map(function(d) {return d.BTC_house}).slice(rangeStart, rangeEnd);
+  var rangeTwo = housebitcoin.map(function(d) { return d.EUR_house; }).slice(rangeStart, rangeEnd);
 
   Chart.defaults.font.size = 12;
+
   var chart = new Chart('housebitcoin', {
+    type: 'line',
+    data: {
+      labels: rangeLabels,
+      datasets: [
+        {
+          label: "Price in bitcoin (₿)",
+          data: rangeOne,
+          yAxisID: 'yLeft',                  // Use the left y-axis
+          backgroundColor: 'rgba(255,153,0, 0.8)',
+          borderColor: 'rgba(255,153,0, 1)',
+          borderWidth: 2,
+          pointStyle: 'rectRounded',
+          pointRadius: 4,
+          fill: false,
+          tension: 0.4
+        },
+        {
+          label: "Price in Euros (€)",
+          data: rangeTwo,
+          yAxisID: 'yRight',                 // Use the right y-axis
+          backgroundColor: 'rgba(68, 114, 196, 0.8)',
+          borderColor: 'rgba(68, 114, 196, 1)',
+          borderWidth: 2,
+          pointStyle: 'rectRounded',
+          pointRadius: 4,
+          fill: false,
+          tension: 0.4
+        }
+      ]
+    },
     options: {
       scales: {
         x: {
           ticks: {
             maxRotation: 90,
-            minRotation: 90,
+            minRotation: 90
           }
         },
-        y: {
-        type: 'logarithmic',
-        ticks: {
-            beginAtZero: true,
-            callback: function(value) {
-              if ([1, 10, 100, 1000, 10000, 100000, 1000000, 10000000].includes(value)) {
-                return value.toString();
-              }
-              return '';
+        yLeft: {
+          type: 'logarithmic',
+          position: 'left',
+          ticks: {
+              beginAtZero: true,
+              callback: function(value) {
+                if ([1, 10, 100, 1000, 10000, 100000, 1000000, 10000000].includes(value)) {
+                  return value.toString();
+                }
+                return '';
+              },
+              min: 1,
+              max: 10000000
             },
-            min: 1,
-            max: 10000000
-          },
-      },
+        },
+        yRight: {
+          type: 'linear',
+          position: 'right'
+        }
       },
       plugins: {
         tooltip: {
           callbacks: {
             label: function(context) {
               const label = context.dataset.label || '';
-              const value = Math.round(context.parsed.y); // Round Y value
+              const value = Math.round(context.parsed.y);
               return `${label}: ${value}`;
             }
           }
         }
       }
-    },
-    data: {
-      labels: rangeLabels,
-      datasets: [
-        {
-          label: "Preu d'un habitatge en bitcoins",
-          type: 'line',
-          data: rangeOne,
-          backgroundColor: 'orange',
-          borderColor: 'rgba(143, 124, 15, 1)',
-          borderWidth: 1,
-          pointStyle: 'circle',
-          pointRadius: 5,
-          fill: false,
-          tension: 0.4
-        }
-      ]
     }
-  })
+  });
 }
 
 // Request data from .csv file using D3js library
