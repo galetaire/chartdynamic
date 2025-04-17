@@ -5,6 +5,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
   <title>🔭 Spain Housing Observatory</title>
 </head>
@@ -17,17 +18,17 @@
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<a href="/images/rentprice2.png">
-  <img src="/images/rentprice2.png" alt="Indice precio alquiler y compra">
-</a>
+<div id="chart-wrapper"><canvas id="rentprice"></canvas></div>
+<script src="../data/rentprice.js"></script>
+
 <ul>
   <li><strong>↑ Evolution of rental prices and housing prices according to both Idealista and the INE, Spain</strong>: base 100 = 2015.</li>
   <li>The INE rental prices are an experimental indicator. For rental prices, Idealista data offers greater reliability since it is the reference marketplace in Spain for rental-seeking purposes.</li>
 </ul>
 
-<a href="/images/rentprice1.png">
-  <img src="/images/rentprice1.png" alt="Evolución precio alquiler de la vivienda">
-</a>
+<div id="chart-wrapper"><canvas id="rentbuy"></canvas></div>
+<script src="../data/rentbuy.js"></script>
+
 <ul>
   <li><strong>↑ Evolution of rental prices and housing prices according to Idealista, Spain</strong>.</li>
   <li>The top numbers inside the grey squares represent the ratio between both values. For example, in 2020, the monthly rental price represented 64% of the price of buying a square meter.</li>
@@ -35,18 +36,16 @@
 
 <h1>Residential rental</h1>
 
-<a href="/images/residentialmap.png">
-  <img src="/images/residentialmap.png" alt="Land scarcity">
-</a>
+  <img src="../images/residentialmap.png" alt="Land scarcity" style="width: 700px">
+
 <ul>
   <li><strong>↑ Distribution of residential rental, Spain</strong>: the values represent the percentage of residential rental homes in the municipality relative to the total number of existing homes in the municipality.</li>
 </ul>
 
 <h1>Vacation rental</h1>
 
-<a href="/images/vacationalmap.png">
-  <img src="/images/vacationalmap.png" alt="Land scarcity">
-</a>
+<img src="../images/vacationalmap.png" alt="Land scarcity" style="width: 700px">
+
 <ul>
   <li><strong>↑ Distribution of vacation rental, Spain</strong>: the values represent the percentage of vacation rental homes in the municipality relative to the total number of existing homes in the municipality.</li>
 </ul>

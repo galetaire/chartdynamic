@@ -1,16 +1,16 @@
 //makeChart, calling the data and variables from the .csv file
-function makeChart(sales) {
-  var rangeStart = 105-2
+function makeChart(credityearly) {
+  var rangeStart = 97-2
   var rangeEnd = new Date().getFullYear() - 1899
-  var rangeLabels = sales.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
-  var rangeOne = sales.map(function(d) {return d.Upper_limit}).slice(rangeStart, rangeEnd);
-  var rangeTwo = sales.map(function(d) {return d.Lower_limit}).slice(rangeStart, rangeEnd);
-  var rangeTres = sales.map(function(d) {return d.Optimal}).slice(rangeStart, rangeEnd);
-  var rangeFour = sales.map(function(d) {return d.Inheritances}).slice(rangeStart, rangeEnd);
-  var rangeFive = sales.map(function(d) {return d.Home_sales}).slice(rangeStart, rangeEnd);
+  var rangeLabels = credityearly.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
+  var rangeOne = credityearly.map(function(d) {return d.Upper_limit}).slice(rangeStart, rangeEnd);
+  var rangeTwo = credityearly.map(function(d) {return d.Lower_limit}).slice(rangeStart, rangeEnd);
+  var rangeTres = credityearly.map(function(d) {return d.Optimal}).slice(rangeStart, rangeEnd);
+  var rangeThree = credityearly.map(function(d) {return d.Approved}).slice(rangeStart, rangeEnd);
+  var rangeFour = credityearly.map(function(d) {return d.Releases}).slice(rangeStart, rangeEnd);
 
   Chart.defaults.font.size = 12;
-  var chart = new Chart('sales', {
+  var chart = new Chart('credityearly', {
     options: {
       responsive: true,
       scales: {
@@ -40,7 +40,8 @@ function makeChart(sales) {
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
           borderColor: 'rgba(0, 0, 0, 1)',
           borderWidth: 1,
-          pointStyle: 'line',
+          pointStyle: false,
+          borderDash:[5, 5],
           fill: false
         },
         {
@@ -50,7 +51,8 @@ function makeChart(sales) {
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
           borderColor: 'rgba(0, 0, 0, 1)',
           borderWidth: 1,
-          pointStyle: 'line',
+          pointStyle: false,
+          borderDash:[5, 5],
           fill: false
         },
         {
@@ -61,24 +63,27 @@ function makeChart(sales) {
           borderColor: 'rgba(0, 0, 0, 1)',
           borderWidth: 1,
           pointStyle: false,
-          borderDash:[5, 5],
+          borderDash:[1, 2],
           fill: false
         },
         {
-            label: 'Inheritances',
+            label: 'Releases',
             type: 'bar',
             data: rangeFour,
-            backgroundColor: 'rgba(178, 10, 142, 1)',
-            borderColor: 'rgba(178, 10, 142, 1)',
-            borderWidth: 0,
+            backgroundColor: 'rgba(255, 153, 0, 1)',
+            borderColor: 'rgba(38, 38, 38, 0.6)',
+            //borderRadius: Number.MAX_VALUE,
+            borderWidth: 1,
+            categoryPercentage: 0.5,
         },
         {
-            label: 'Homes Sales',
+            label: 'Approvals',
             type: 'bar',
-            data: rangeFive,
-            backgroundColor: 'rgba(91, 155, 213, 1)',
-            borderColor: 'rgba(91, 155, 213, 1)',
-            borderWidth: 3,
+            data: rangeThree,
+            backgroundColor: 'rgba(91, 155, 213, 0.8)',
+            borderColor: 'rgba(38, 38, 38, 1)',
+            borderWidth: 1,
+            categoryPercentage: 1,
         },
       ]
     }

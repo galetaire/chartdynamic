@@ -17,26 +17,20 @@
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<p>
-  <a href="/images/rainbowmax.png">
-    <img src="/images/rainbowmax.png" alt="Ciclos inmobiliarios">
-  </a>
-</p>
+<p style="font-size: 14px; font-style: italic;">This is an experimental indicator. Must be read as an informative indicator, not a scientific measure.</p>
+<div id="chart-wrapper" style="border-radius:12px; overflow:hidden; display:inline-block;">
+<canvas id="rainbow" width="700" height="375"></canvas></div>
+<script src="../data/rainbow.js"></script>
 
 <ul>
   <li><strong>Color range interpretation</strong> ➞
-    <strong>Red</strong> = strong overprice;
-    <strong>Orange</strong> = slightly overprice;
-    <strong>Yellow</strong> = neutral;
-    <strong>Green</strong> = slightly underprice;
-    <strong>Blue</strong> = strong underprice.
+    <strong style="color: rgba(209, 53, 53);">Red</strong> = strong overprice;
+    <strong style="color: rgba(224, 120, 16);">Orange</strong> = slightly overprice;
+    <strong style="color: rgba(201, 161, 0);">Yellow</strong> = neutral;
+    <strong style="color: rgba(12, 160, 111);">Green</strong> = slightly underprice;
+    <strong style="color: rgba(9, 87, 134);">Blue</strong> = strong underprice.
   </li>
 </ul>
-
-<pre>
-This is an experimental indicator, open to improvements and corrections.
-Must be read as an informative indicator, not a scientific measure.
-</pre>
 
 <p>
   The rainbow curve describes a demographic band, which, overlapped with the real price, evaluates the stage of the price cycle. A few notes and considerations:
@@ -50,18 +44,12 @@ Must be read as an informative indicator, not a scientific measure.
 </ul>
 
 <h3>Equations chart:</h3>
-<p>
-  <a href="/images/rainbowsource.png">
-    <img src="/images/rainbowsource.png" alt="Reload chart">
-  </a>
-</p>
+
+<img src="../images/rainbowsource.png" alt="Rainbow source" style="width: 700px">
 
 <h3>Peaks and troughs chart, from 1964 to 2070:</h3>
-<p>
-  <a href="/images/rainbow.png">
-    <img src="/images/rainbow.png" alt="Reload chart">
-  </a>
-</p>
+
+<img src="../images/rainbow.png" alt="House value" style="width: 700px">
 
 <h1>Data sources</h1>
 <ul>
