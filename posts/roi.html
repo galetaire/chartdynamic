@@ -6,7 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
-  <title>🔭 Spain Housing Observatory</title>
+  <title>🔭 SHO - Return on inverstment</title>
 </head>
 <body>
 <br>
@@ -17,9 +17,8 @@
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<a href="/images/roigross.png">
-   <img src="/images/roigross.png" alt="Rentabilidad de la vivienda">
- </a>
+<div id="chart-wrapper"><canvas id="roigross"></canvas></div>
+<script src="../data/roigross.js"></script>
  <ul>
    <li><strong>↑ Housing gross appreciation (%)</strong>, Spain.
      <ul>
@@ -29,9 +28,8 @@
    </li>
  </ul>
 
- <a href="/images/roinet.png">
-   <img src="/images/roinet.png" alt="Housing ROI">
- </a>
+ <div id="chart-wrapper"><canvas id="roinet"></canvas></div>
+ <script src="../data/roinet.js"></script>
  <ul>
    <li><strong>↑ Housing return on investment (%)</strong>: considers both gross asset appreciation and net rental return (as calculated in section <strong>b</strong>).
      <ul>
@@ -44,16 +42,14 @@
  <h1>Average rental return</h1>
  <p><em>Rental source: <a href="https://www.idealista.com/sala-de-prensa/informes-precio-vivienda/alquiler/"><strong>Idealista</strong></a></em></p>
 
- <a href="/images/rentratio.png">
-   <img src="/images/rentratio.png" alt="Rentabilidad alquiler">
- </a>
+ <div id="chart-wrapper"><canvas id="rentratio"></canvas></div>
+ <script src="../data/rentratio.js"></script>
  <ul>
    <li><strong>↑ Price-to-rent ratio (%, net and gross)</strong>: annual percentage of housing rental return in Spain.</li>
  </ul>
 
- <a href="/images/renttime.png">
-   <img src="/images/renttime.png" alt="Rentabilidad alquiler">
- </a>
+ <div id="chart-wrapper"><canvas id="renttime"></canvas></div>
+ <script src="../data/renttime.js"></script>
  <ul>
    <li><strong>↑ Price-to-rent ratio (time, net and gross)</strong>: number of years to fully recover the cost of a home purchase in Spain through rental income.</li>
  </ul>

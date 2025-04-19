@@ -6,7 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
-  <title>🔭 Spain Housing Observatory</title>
+  <title>🔭 SHO - Credit</title>
 </head>
 <body>
 <br>
@@ -43,9 +43,8 @@
   <li><strong>Observation</strong>: the ratio <em>Mortgages/Sales</em> hints the formation of credit bubbles.</li>
 </ul>
 
-<a href="/images/typemortgage.png">
-  <img src="/images/typemortgage.png" alt="Tipo de hipotecas firmadas">
-</a>
+<div id="chart-wrapper"><canvas id="typemortgage"></canvas></div>
+<script src="../data/typemortgage.js"></script>
 <ul>
   <li>↑ <strong>Mortgages constituted according to type of interest rate (%)</strong>: fixed or variable.</li>
 </ul>

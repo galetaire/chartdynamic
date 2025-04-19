@@ -1,44 +1,50 @@
 //makeChart, calling the data and variables from the .csv file
-function makeChart(creditmovement) {
-  var rangeStart = 97-2
+function makeChart(buyer) {
+  var rangeStart = 113-2
   var rangeEnd = new Date().getFullYear() - 1899
-  var rangeLabels = creditmovement.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
-  var rangeOne = creditmovement.map(function(d) {return d.Average_amount}).slice(rangeStart, rangeEnd);
-  var rangeTwo = creditmovement.map(function(d) {return d.Real_credit_movement}).slice(rangeStart, rangeEnd);
+  var rangeLabels = buyer.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
+  var rangeOne = buyer.map(function(d) {return d.Legal_entity}).slice(rangeStart, rangeEnd);
+  var rangeTwo = buyer.map(function(d) {return d.Nationals}).slice(rangeStart, rangeEnd);
+  var rangeTres = buyer.map(function(d) {return d.Foreigners}).slice(rangeStart, rangeEnd);
 
-  Chart.defaults.font.size = 12;
-  new Chart('creditmovement', {
+  Chart.defaults.font.size = 14;
+  new Chart('buyer', {
     type: 'bar',  // default for bar+line mixed
     data: {
       labels: rangeLabels,
       datasets: [
         {
-          label: 'Average mortgage amount',
-          type: 'line',
-          data: rangeOne,
-          yAxisID: 'yRight',               // ← correct axis
-          backgroundColor: 'white',
-          borderColor: 'black',
+          label: 'Foreigners',
+          type: 'bar',
+          data: rangeTres,
+          backgroundColor: 'rgba(255, 0, 0, 0.8)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
           borderWidth: 1.2,
           pointStyle: 'circle',
           pointRadius: 6,
           fill: false
         },
         {
-          label: 'Real credit movement',
+          label: 'Legal entity',
           type: 'bar',
-          yAxisID: 'yLeft',
+          data: rangeOne,
+          backgroundColor: 'rgba(0, 176, 80, 0.9)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
+          borderWidth: 1.2,
+          pointStyle: 'circle',
+          pointRadius: 6,
+          fill: false
+        },
+        {
+          label: 'Nationals',
+          type: 'bar',
           data: rangeTwo,
-          backgroundColor: ctx =>
-            ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 0.8)'
-              : 'rgba(255, 153, 0, 0.9)',
-          borderColor: ctx =>
-            ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 1)'
-              : 'rgba(255, 153, 0, 1)',
-          categoryPercentage: 1,
-          borderWidth: 1,
+          backgroundColor: 'rgba(91, 155, 213, 0.8)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
+          borderWidth: 1.2,
+          pointStyle: 'circle',
+          pointRadius: 6,
+          fill: false
         },
       ]
     },
@@ -51,12 +57,14 @@ function makeChart(creditmovement) {
                   let value = ctx.parsed.y;
 
                   // Only format this one dataset’s value
-                  if (label === 'Average mortgage amount') {
+                  if (label === '...') {
                     // toLocaleString adds thousand separators; force 0 decimals
                     value = Number(value).toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     });
-                  } else if (label === 'Real credit movement') {
+                  } else if (label === 'Foreigners' ||
+                              label === 'Nationals' ||
+                            label === 'Lebal entity') {
                     // two decimals
                     value = value.toFixed(2);
                   }
@@ -76,18 +84,17 @@ function makeChart(creditmovement) {
             beginAtZero: true,
           }
         },
-        yLeft: {
-          type: 'linear',
-          position: 'left',
-          stacked: false,
-          ticks: { beginAtZero: true }
+        y: {
+          min: 0,
+          max: 100,
+          stacked: true,
+          ticks: {
+            callback: function(value, index, ticks) {
+            return value + '%';
+          },
+            beginAtZero: true,
+          },
         },
-        yRight: {
-          type: 'linear',
-          position: 'right',
-          stacked: false,
-          ticks: { beginAtZero: true, }
-        }
       }
     }
   });

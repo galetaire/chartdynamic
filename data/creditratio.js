@@ -20,9 +20,10 @@ function makeChart(creditratio) {
           yAxisID: 'yRight',               // ← correct axis
           backgroundColor: 'rgba(255, 153, 0, 0.9)',
           borderColor: 'rgba(0, 0, 0, 1)',
-          borderWidth: 0,
+          borderWidth: 0.8,
           pointStyle: 'circle',
           pointRadius: 6,
+          showLine: false,
           fill: false
         },
         {
@@ -32,8 +33,7 @@ function makeChart(creditratio) {
           data: rangeFour,
           backgroundColor: 'rgba(91, 155, 213, 0)',
           borderColor: 'rgba(31, 78, 121, 1)',
-          borderRadius: Number.MAX_VALUE,
-          borderWidth: 3,
+          borderWidth: 2.3,
         },
         {
           label: 'Mortgages',
@@ -55,13 +55,19 @@ function makeChart(creditratio) {
                   let value = ctx.parsed.y;
 
                   // Only format this one dataset’s value
-                  if (label === 'Mortgages to home sales ratio') {
+                  if (label === 'Home sales' ||
+                      label === 'Mortgages') {
+                    // toLocaleString adds thousand separators; force 0 decimals
+                    value = Number(value).toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    });
+                  } else if (label === 'Mortgages to home sales ratio') {
+                    // two decimals
                     value = value.toFixed(2);
                   }
-
                   // For all others, leave as-is (or format differently)
                   return `${label}: ${value}`;
-                }
+                },
             }
           }
         },

@@ -1,42 +1,41 @@
 //makeChart, calling the data and variables from the .csv file
-function makeChart(creditmovement) {
-  var rangeStart = 97-2
+function makeChart(costchange) {
+  var rangeStart = 94-2
   var rangeEnd = new Date().getFullYear() - 1899
-  var rangeLabels = creditmovement.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
-  var rangeOne = creditmovement.map(function(d) {return d.Average_amount}).slice(rangeStart, rangeEnd);
-  var rangeTwo = creditmovement.map(function(d) {return d.Real_credit_movement}).slice(rangeStart, rangeEnd);
+  var rangeLabels = costchange.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
+  var rangeOne = costchange.map(function(d) {return d.Inflation_CPI}).slice(rangeStart, rangeEnd);
+  var rangeTwo = costchange.map(function(d) {return d.Cost_production_ave}).slice(rangeStart, rangeEnd);
 
-  Chart.defaults.font.size = 12;
-  new Chart('creditmovement', {
+  Chart.defaults.font.size = 11;
+  new Chart('costchange', {
     type: 'bar',  // default for bar+line mixed
     data: {
       labels: rangeLabels,
       datasets: [
         {
-          label: 'Average mortgage amount',
+          label: 'Inflation',
           type: 'line',
           data: rangeOne,
-          yAxisID: 'yRight',               // ← correct axis
           backgroundColor: 'white',
           borderColor: 'black',
-          borderWidth: 1.2,
+          borderWidth: 1,
           pointStyle: 'circle',
-          pointRadius: 6,
-          fill: false
+          pointRadius: 2,
+          fill: false,
+          tension: 0.4,
         },
         {
-          label: 'Real credit movement',
+          label: 'Cost of production, percentage change YoY',
           type: 'bar',
-          yAxisID: 'yLeft',
           data: rangeTwo,
           backgroundColor: ctx =>
             ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 0.8)'
+              ? 'rgb(112, 48, 160, 0.9)'
               : 'rgba(255, 153, 0, 0.9)',
           borderColor: ctx =>
             ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 1)'
-              : 'rgba(255, 153, 0, 1)',
+              ? 'rgb(0, 0, 0, 0.7)'
+              : 'rgba(0, 0, 0, 0.7)',
           categoryPercentage: 1,
           borderWidth: 1,
         },
@@ -44,6 +43,7 @@ function makeChart(creditmovement) {
     },
     options: {
       plugins: {
+        datalabels: false,
     tooltip: {
       callbacks: {
         label(ctx) {
@@ -51,12 +51,12 @@ function makeChart(creditmovement) {
                   let value = ctx.parsed.y;
 
                   // Only format this one dataset’s value
-                  if (label === 'Average mortgage amount') {
+                  if (label === '...') {
                     // toLocaleString adds thousand separators; force 0 decimals
                     value = Number(value).toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     });
-                  } else if (label === 'Real credit movement') {
+                  } else if (label === 'Cost of production, percentage change YoY') {
                     // two decimals
                     value = value.toFixed(2);
                   }
@@ -76,18 +76,6 @@ function makeChart(creditmovement) {
             beginAtZero: true,
           }
         },
-        yLeft: {
-          type: 'linear',
-          position: 'left',
-          stacked: false,
-          ticks: { beginAtZero: true }
-        },
-        yRight: {
-          type: 'linear',
-          position: 'right',
-          stacked: false,
-          ticks: { beginAtZero: true, }
-        }
       }
     }
   });

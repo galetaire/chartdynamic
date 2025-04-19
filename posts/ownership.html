@@ -6,7 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
-  <title>🔭 Spain Housing Observatory</title>
+  <title>🔭 SHO - Ownership structure</title>
 </head>
 <body>
 <br>
@@ -17,9 +17,8 @@
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<a href="/images/buyer.png">
-  <img src="/images/buyer.png" alt="Nacionalidad de los compradores de vivienda">
-</a>
+<div id="chart-wrapper"><canvas id="buyer"></canvas></div>
+<script src="../data/buyer.js"></script>
 
 <p>
   The chart from above shows the distribution (%) of home sales according to whether the buyer is national, foreigner or a legal entity (companies, investment funds ...). Thus, we can see who dominates and who departs the market. Some observations:
@@ -32,9 +31,8 @@
 
 <h1>Housing by type of tenure</h1>
 
-<a href="/images/tenure.png">
-  <img src="/images/tenure.png" alt="Régimen de tenencia de la vivienda">
-</a>
+<div id="chart-wrapper"><canvas id="tenure"></canvas></div>
+<script src="../data/tenure.js"></script>
 
 <p>
   The chart from above shows the distribution (%) of homes according to whether the house is owned (and used as primary house for living), rented or freely loaned. Thus, we can see the structure of ownership in Spain. Some observations:

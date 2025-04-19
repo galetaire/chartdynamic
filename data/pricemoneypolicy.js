@@ -1,31 +1,50 @@
 //makeChart, calling the data and variables from the .csv file
-function makeChart(creditmovement) {
-  var rangeStart = 97-2
+function makeChart(pricemoneypolicy) {
+  var rangeStart = 82-2
   var rangeEnd = new Date().getFullYear() - 1899
-  var rangeLabels = creditmovement.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
-  var rangeOne = creditmovement.map(function(d) {return d.Average_amount}).slice(rangeStart, rangeEnd);
-  var rangeTwo = creditmovement.map(function(d) {return d.Real_credit_movement}).slice(rangeStart, rangeEnd);
+  var rangeLabels = pricemoneypolicy.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
+  var rangeOne = pricemoneypolicy.map(function(d) {return d.Nominal_price_yoy_per}).slice(rangeStart, rangeEnd);
+  var rangeTwo = pricemoneypolicy.map(function(d) {return d.IR_yoy_per}).slice(rangeStart, rangeEnd);
 
   Chart.defaults.font.size = 12;
-  new Chart('creditmovement', {
+  new Chart('pricemoneypolicy', {
     type: 'bar',  // default for bar+line mixed
     data: {
       labels: rangeLabels,
       datasets: [
         {
-          label: 'Average mortgage amount',
+          label: 'Nominal price (%)',
           type: 'line',
           data: rangeOne,
           yAxisID: 'yRight',               // ← correct axis
           backgroundColor: 'white',
           borderColor: 'black',
-          borderWidth: 1.2,
-          pointStyle: 'circle',
-          pointRadius: 6,
-          fill: false
+          borderWidth: 1,
+          pointStyle: 'crossRot',
+          pointRadius: 4,
+          borderDash:[3, 3],
+          fill: false,
+          segment: {
+              borderColor: ctx =>
+                ctx.p1.parsed.y < 0
+                  ? 'red'
+                  : 'black',
+              backgroundColor: ctx =>
+                ctx.p1.parsed.y < 0
+                  ? 'red'
+                  : 'black',
+                },
+          pointBackgroundColor: ctx =>
+                ctx.parsed.y < 0
+                  ? 'red'
+                  : 'black',
+          pointBorderColor: ctx =>
+                ctx.parsed.y < 0
+                  ? 'red'
+                  : 'black',
         },
         {
-          label: 'Real credit movement',
+          label: 'Mibor/Euribor (%)',
           type: 'bar',
           yAxisID: 'yLeft',
           data: rangeTwo,
@@ -51,12 +70,13 @@ function makeChart(creditmovement) {
                   let value = ctx.parsed.y;
 
                   // Only format this one dataset’s value
-                  if (label === 'Average mortgage amount') {
+                  if (label === '...') {
                     // toLocaleString adds thousand separators; force 0 decimals
                     value = Number(value).toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     });
-                  } else if (label === 'Real credit movement') {
+                  } else if (label === 'Mibor/Euribor (%)' ||
+                            label === 'Nominal price (%)') {
                     // two decimals
                     value = value.toFixed(2);
                   }
@@ -69,24 +89,26 @@ function makeChart(creditmovement) {
       responsive: true,
       scales: {
         x: {
-          stacked: true,
           ticks: {
             maxRotation: 90,
             minRotation: 90,
-            beginAtZero: true,
           }
         },
         yLeft: {
+          min: -5,
+          max: 5,
           type: 'linear',
           position: 'left',
           stacked: false,
-          ticks: { beginAtZero: true }
+          ticks: {}
         },
         yRight: {
+          min: -50,
+          max: 50,
           type: 'linear',
           position: 'right',
           stacked: false,
-          ticks: { beginAtZero: true, }
+          ticks: {}
         }
       }
     }

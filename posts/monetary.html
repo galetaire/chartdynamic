@@ -6,7 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
   <link href="../styles/style.css" rel="stylesheet" type="text/css">
-  <title>🔭 Spain Housing Observatory</title>
+  <title>🔭 SHO - Monetary policy</title>
 </head>
 <body>
 <br>
@@ -17,19 +17,17 @@
   <button onclick="window.location.href='../methodology.html'">Methodology 📓</button>
 </div>
 <br>
-<a href="/images/euribor.png">
-    <img src="/images/euribor.png" alt="Euribor y interés hipotecas">
-  </a>
+<div id="chart-wrapper"><canvas id="euribor"></canvas></div>
+<script src="../data/euribor.js"></script>
   <ul>
     <li>↑ <strong>Euribor 1-year average rate and average mortgage rate</strong>, Spain. An increase (or decrease) of it implies increases (or decreases) in mortgage rates, which alters the direction and speed of money movement.</li>
   </ul>
 
-  <a href="/images/pricemoneypolicy.png">
-    <img src="/images/pricemoneypolicy.png" alt="Política monetaria y precio vivienda">
-  </a>
+  <div id="chart-wrapper"><canvas id="pricemoneypolicy"></canvas></div>
+  <script src="../data/pricemoneypolicy.js"></script>
   <ul>
     <li>
-      ↑ <strong>Nominal price and Interest rate</strong>: percentage of annual change compared to the previous year.
+      ↑ <strong>Nominal price and Interest rate</strong>: percentage of annual change compared to the previous year. <strong style="color: rgba(9, 87, 134);">Blue</strong> = tight monetary policy, <strong style="color: rgba(224, 120, 16);">Orange</strong> = loose monetary policy.
       <ul>
         <li><strong>Left axis (bars)</strong>: interest rate (<em>Mibor/Euribor</em>).</li>
         <li><strong>Right axis (line)</strong>: nominal price.</li>
@@ -37,9 +35,8 @@
     </li>
   </ul>
 
-  <a href="/images/moneygrowth.png">
-    <img src="/images/moneygrowth.png" alt="Crecimiento de la vivienda y el dinero">
-  </a>
+  <div id="chart-wrapper"><canvas id="moneygrowth"></canvas></div>
+  <script src="../data/moneygrowth.js"></script>
   <ul>
     <li>↑ <strong>Money growth compared to housing growth (%)</strong>. If the stock of the Euro grows faster than the stock of houses, houses become scarcer relative to the money in circulation, pushing up the housing prices and vice versa.</li>
   </ul>

@@ -28,7 +28,7 @@ function makeChart(sales) {
             beginAtZero: true
           }
         }
-      }
+      },
     },
     data: {
       labels: rangeLabels,

@@ -1,42 +1,41 @@
 //makeChart, calling the data and variables from the .csv file
-function makeChart(creditmovement) {
-  var rangeStart = 97-2
+function makeChart(roinet) {
+  var rangeStart = 88-2
   var rangeEnd = new Date().getFullYear() - 1899
-  var rangeLabels = creditmovement.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
-  var rangeOne = creditmovement.map(function(d) {return d.Average_amount}).slice(rangeStart, rangeEnd);
-  var rangeTwo = creditmovement.map(function(d) {return d.Real_credit_movement}).slice(rangeStart, rangeEnd);
+  var rangeLabels = roinet.map(function(d) {return d.Year}).slice(rangeStart, rangeEnd);
+  var rangeOne = roinet.map(function(d) {return d.Inflation_CPI}).slice(rangeStart, rangeEnd);
+  var rangeTwo = roinet.map(function(d) {return d.Net_ROI_yoy_per}).slice(rangeStart, rangeEnd);
 
-  Chart.defaults.font.size = 12;
-  new Chart('creditmovement', {
+  Chart.defaults.font.size = 11;
+  new Chart('roinet', {
     type: 'bar',  // default for bar+line mixed
     data: {
       labels: rangeLabels,
       datasets: [
         {
-          label: 'Average mortgage amount',
+          label: 'Inflation',
           type: 'line',
           data: rangeOne,
-          yAxisID: 'yRight',               // ← correct axis
           backgroundColor: 'white',
           borderColor: 'black',
-          borderWidth: 1.2,
+          borderWidth: 1,
           pointStyle: 'circle',
-          pointRadius: 6,
+          pointRadius: 2,
+          borderDash:[5, 5],
           fill: false
         },
         {
-          label: 'Real credit movement',
+          label: 'Gross appreciation + net rental returns',
           type: 'bar',
-          yAxisID: 'yLeft',
           data: rangeTwo,
           backgroundColor: ctx =>
             ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 0.8)'
-              : 'rgba(255, 153, 0, 0.9)',
+              ? 'rgb(0, 204, 153, 0.9)'
+              : 'rgba(255, 0, 0, 0.5)',
           borderColor: ctx =>
             ctx.parsed.y >= 0
-              ? 'rgba(91, 155, 213, 1)'
-              : 'rgba(255, 153, 0, 1)',
+              ? 'rgb(4, 138, 104, 1)'
+              : 'rgba(255, 0, 0, 1)',
           categoryPercentage: 1,
           borderWidth: 1,
         },
@@ -51,12 +50,12 @@ function makeChart(creditmovement) {
                   let value = ctx.parsed.y;
 
                   // Only format this one dataset’s value
-                  if (label === 'Average mortgage amount') {
+                  if (label === '...') {
                     // toLocaleString adds thousand separators; force 0 decimals
                     value = Number(value).toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     });
-                  } else if (label === 'Real credit movement') {
+                  } else if (label === 'Gross appreciation + net rental returns') {
                     // two decimals
                     value = value.toFixed(2);
                   }
@@ -76,18 +75,6 @@ function makeChart(creditmovement) {
             beginAtZero: true,
           }
         },
-        yLeft: {
-          type: 'linear',
-          position: 'left',
-          stacked: false,
-          ticks: { beginAtZero: true }
-        },
-        yRight: {
-          type: 'linear',
-          position: 'right',
-          stacked: false,
-          ticks: { beginAtZero: true, }
-        }
       }
     }
   });
